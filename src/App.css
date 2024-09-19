@@ -36,3 +36,176 @@ nav{
   /* border-bottom: 0.5px solid white; */
   
 /* } */
+/* Ensure offcanvas nav items are visible and have black text color */
+.offcanvas .navbar-nav .nav-link {
+  color: #000 !important; /* Black color for nav items */
+}
+
+.offcanvas .dropdown-menu .dropdown-item {
+  color: #000 !important; /* Black color for dropdown items */
+}
+
+.offcanvas .navbar-nav .nav-link:hover,
+.offcanvas .dropdown-menu .dropdown-item:hover {
+  color: #333 !important; /* Slightly lighter color for hover effect */
+}
+
+/* Additional styles to ensure proper visibility and readability */
+.offcanvas {
+  background-color: #f8f9fa; /* Background color to contrast with text */
+}
+
+/* Categories.css */
+
+/* Flexbox for centering buttons in mobile view */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Adjust button size and alignment */
+.btn {
+  width: 100%; /* Full width for mobile */
+  max-width: 300px; /* Maximum width for buttons */
+}
+
+/* Media query for better mobile responsiveness */
+@media (max-width: 576px) {
+  .btn {
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+}
+
+
+/* Add this CSS to your global stylesheet or component-specific stylesheet */
+
+.card-body .btn {
+  font-size: 0.875rem; /* Decrease font size for buttons */
+  padding: 0.5rem 1rem; /* Adjust padding for smaller button size */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.btn-sm {
+  font-size: 0.75rem; /* Smaller font size for buttons */
+  padding: 0.25rem 0.5rem; /* Smaller padding for buttons */
+}
+
+.card-body .d-flex {
+  gap: 0.5rem; /* Space between buttons */
+}
+
+/* Add this CSS to your global stylesheet or component-specific stylesheet */
+
+.card-body .btn {
+  font-size: 0.875rem; /* Decrease font size for buttons */
+  padding: 0.5rem 1rem; /* Adjust padding for smaller button size */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.btn-sm {
+  font-size: 0.75rem; /* Smaller font size for buttons */
+  padding: 0.25rem 0.5rem; /* Smaller padding for buttons */
+}
+
+.card-body .d-flex {
+  gap: 0.5rem; /* Space between buttons */
+}
+
+
+/* CartPage.css */
+
+/* Decrease the size of product images and text for mobile view */
+@media (max-width: 767px) {
+  .product-image img {
+    max-width: 80%; /* Adjust the image size */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .card p {
+    font-size: 0.9rem; /* Adjust text size */
+  }
+
+  .btn {
+    font-size: 0.9rem; /* Adjust button text size */
+  }
+}
+
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 9px solid #0d6efd;
+  animation: spinner-bulqg1 0.8s infinite linear alternate,
+       spinner-oaa3wk 1.6s infinite linear;
+}
+
+@keyframes spinner-bulqg1 {
+  0% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+
+  12.5% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+
+  25% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  50% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  62.5% {
+     clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  75% {
+     clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  100% {
+     clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+  }
+}
+
+@keyframes spinner-oaa3wk {
+  0% {
+     transform: scaleY(1) rotate(0deg);
+  }
+
+  49.99% {
+     transform: scaleY(1) rotate(135deg);
+  }
+
+  50% {
+     transform: scaleY(-1) rotate(0deg);
+  }
+
+  100% {
+     transform: scaleY(-1) rotate(-135deg);
+  }
+}
+
+/* styles.css */
+.custom-button {
+  background-color: #007bff; /* Bootstrap blue */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

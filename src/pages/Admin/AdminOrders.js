@@ -3,7 +3,6 @@ import Adminmenu from "../../Components/Adminmenu";
 import Layout from "../../Components/Layout";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import moment from "moment";
 import { useAuth } from "../../context/Auth";
 import { Select } from "antd";
 const {Option}=Select;
@@ -47,14 +46,15 @@ const AdminOrders = () => {
     <Layout title={"All Order Data"}>
       <div className="container-fluid m-3 p-3">
       <div className="row">
-        <div className="col-md-3">
+        <div className="col-md-3 d-none d-md-block">
           <Adminmenu />
         </div>
-        <div className="col-md-9">
-          <h1 className="text-center">All Orders</h1>
+        <div className="col-md-9 col-12">
+          <h1 className="text-center mb-4">All Orders</h1>
           {orders?.map((o, i) => {
             return (
-              <div className="border shadow">
+              <div className="border shadow mb-4 p-3">
+                <div className="table-responsive">
                 <table className="table">
                   <thead>
                     <tr>
@@ -82,26 +82,24 @@ const AdminOrders = () => {
                           ))}
                         </Select>
                       </td>
-                      {/* <td>{o?.buyer?.name}</td> */}
-                     {/* <td>{moment(o?.createdAt).fromNow()}</td> */}
                       <td>Success</td>
                       <td>{o?.products?.length}</td>
                     </tr>
                   </tbody>
                 </table>
+                </div>
                 <div className="container">
                   {o?.products?.map((p, i) => (
-                    <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                      <div className="col-md-4">
+                    <div className="row mb-2 p-3 card flex-row flex-wrap" key={p._id}>
+                      <div className="col-md-4 col-12 mb-2">
                         <img
                           src={`https://ecommerce-backend-ebon-iota.vercel.app/api/v1/product/get-photo/${p}`}
-                          className="card-img-top"
+                          className="card-img-top img-fluid"
                           alt={p.name}
-                          width="300px"
-                          height={"300px"}
+                          style={{maxWidth:"100%",height:"auto"}}
                         />
                       </div>
-                      <div className="col-md-8">
+                      <div className="col-md-8 col-12">
                         <p>Product Id : {p}</p>
                         <p>{p.name}</p>
                         <p>Price : ₹{p[i]}00</p>

@@ -5,11 +5,13 @@ import { toast } from "react-toastify";
 import SearchInput from "./form/SearchInput";
 import useCategory from "../hooks/useCategory";
 import { useCart } from "../context/cart";
+import '../App.css';
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const [cart]=useCart()
+  const [cart] = useCart();
   const categories = useCategory();
+
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -21,76 +23,107 @@ const Header = () => {
       position: toast.POSITION.TOP_CENTER,
     });
   };
+
   return (
     <>
-      <nav className="navbar navbar-dark bg-primary navbar-expand-lg header">
+      <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
         <div className="container-fluid">
+          {/* Logo */}
+          <Link to="/" className="navbar-brand">
+            🛒 Ecommerce App
+          </Link>
+
+          {/* Toggler for mobile view to open offcanvas */}
           <button
             className="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              🛒 Ecommerce App
-            </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput />
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  to={"/categories"}
-                  data-bs-toggle="dropdown"
-                  
-                >
-                  Category
-                </Link>
-                
-                  <ul className="dropdown-menu ">
+
+          {/* Offcanvas Sidebar for Nav Items */}
+          <div
+            className="offcanvas offcanvas-end"
+            tabIndex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div className="offcanvas-header">
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+                Navigation
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="offcanvas-body">
+              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                {/* Search Input */}
+                <li className="nav-item">
+                  <SearchInput />
+                </li>
+
+                {/* Home Link */}
+                <li className="nav-item">
+                  <NavLink to="/" className="nav-link">
+                    Home
+                  </NavLink>
+                </li>
+
+                {/* Categories Dropdown */}
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle"
+                    to={"/categories"}
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Category
+                  </Link>
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
-                      <Link className="dropdown-item"  to={"/categories"}>
+                      <Link className="dropdown-item" to="/categories">
                         All Categories
                       </Link>
                     </li>
-                    {categories?.map((c)=>(
-                      <li>
-                        <Link className="dropdown-item"
-                        to={`/category/${c.slug}`} >{c.name}</Link>
+                    {categories?.map((c) => (
+                      <li key={c._id}>
+                        <Link className="dropdown-item" to={`/category/${c.slug}`}>
+                          {c.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
+                </li>
 
-              </li>
-              {!auth?.user ? (
-                <>
-                  <li className="nav-item">
-                    <NavLink to="/register" className="nav-link">
-                      Register
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/login" className="nav-link">
-                      Login
-                    </NavLink>
-                  </li>
-                </>
-              ) : (
-                <>
+                {/* Register/Login or Dashboard/Logout */}
+                {!auth?.user ? (
+                  <>
+                    <li className="nav-item">
+                      <NavLink to="/register" className="nav-link">
+                        Register
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/login" className="nav-link">
+                        Login
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
                   <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
-                      href="#"
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -119,14 +152,16 @@ const Header = () => {
                       </li>
                     </ul>
                   </li>
-                </>
-              )}
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart <sup>{cart?.length}</sup>
-                </NavLink>
-              </li>
-            </ul>
+                )}
+
+                {/* Cart Link */}
+                <li className="nav-item">
+                  <NavLink to="/cart" className="nav-link">
+                    Cart <sup>{cart?.length}</sup>
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -135,3 +170,4 @@ const Header = () => {
 };
 
 export default Header;
+  

@@ -26,11 +26,13 @@ import Categories from "./pages/Categories.js";
 import CategoryProduct from "./pages/CategoryProduct.js";
 import CartPage from "./pages/CartPage.js";
 import AdminOrders from "./pages/Admin/AdminOrders.js";
+import Header from "./Components/Header.js"
 // import 'antd/dist/reset.css';
 function App() {
 
   return (
     <>
+    <Header/>
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/categories' element={<Categories/>}/>

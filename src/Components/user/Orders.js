@@ -3,7 +3,6 @@ import Layout from "../Layout";
 import UserMenu from "./UserMenu";
 import axios from "axios";
 import { useAuth } from "../../context/Auth";
-// import moment from "moment/moment";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -11,7 +10,7 @@ const Orders = () => {
   const getOrder = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/auth/orders"
+        "https://ecommerce-backend-ebon-iota.vercel.app/api/v1/auth/orders"
       );
       setOrders(data);
     } catch (error) {
@@ -49,7 +48,7 @@ const Orders = () => {
                         <td>{i + 1}</td>
                         <td>{o?.status}</td>
                         {/* <td>{o?.buyer?.name}</td> */}
-                       {/* <td>{moment(o?.createdAt).fromNow()}</td> */}
+                        {/*<td>{moment(o?.createdAt).fromNow()}</td>*/}
                         <td>Success</td>
                         <td>{o?.products?.length}</td>
                       </tr>
@@ -60,7 +59,7 @@ const Orders = () => {
                       <div className="row mb-2 p-3 card flex-row" key={product._id}>
                         <div className="col-md-4">
                           <img
-                            src={`http://localhost:8080/api/v1/product/get-photo/${product}`}
+                            src={`https://ecommerce-backend-ebon-iota.vercel.app/api/v1/product/get-photo/${product}`}
                             className="card-img-top"
                             alt={product.name}
                             width="300px"
