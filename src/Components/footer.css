@@ -1,0 +1,37 @@
+.footer{
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    /* background-color: rgba(0, 98, 255, 0.412); */
+    width: 1535px;
+    height: 60px;  
+    padding: 10px;
+    /* left:0; */
+    /* border-top: 0.5px solid red; */
+    align-items: center;
+    text-align: end;
+
+}
+.footer h1{
+    align-items: center;
+    position: absolute;
+    margin-left: 550px;
+    font-weight: 600;
+    font-size: x-large;
+    color: white;
+    /* justify-content: center;
+    margin: auto    ; */
+}
+.links{
+   /* background-color: white; */
+    position: absolute;
+    display: flex;
+    /* color: white; */
+    margin-left: 650px;
+    margin-top: 50px;
+}
+a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+}
