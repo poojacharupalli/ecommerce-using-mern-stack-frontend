@@ -6,7 +6,7 @@ import { useState } from 'react'
 import axios from 'axios';
 const ForgotPassword = () => {
   const [email,setEmail]=useState("");
-  const [password,newPassword]=useState("");
+  const [password,setPassword]=useState("");
   const [answer,setAnswer]=useState(""); 
   const navigate=useNavigate()
   //form 
@@ -55,33 +55,31 @@ const handleSubmit= async (e)=>{
               className="form-control"
               aria-describedby="emailHelp"
               value={password}
-              onChange={(e)=>{newPassword(e.target.value)}}
+              onChange={(e)=>{setPassword(e.target.value)}}
             />
             <div id="emailHelp" className="form-text"></div>
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" id='2' className="form-label">
-             Favouite Sport
+            <label htmlFor="answerInput" className="form-label">
+              Favourite Sport
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
-              aria-describedby="emailHelp"
+              id="answerInput"
               value={answer}
-              onChange={(e)=>{setAnswer(e.target.value)}}
+              onChange={(e) => setAnswer(e.target.value)}
             />
-            <div id="emailHelp" className="form-text"></div>
           </div>
-          <div className='mb-3'>
-          <button type="submit" className="btn btn-primary">
-            Reset Password
-          </button>
+          <div className="mb-3">
+            <button type="submit" className="btn btn-primary">
+              Reset Password
+            </button>
           </div>
-          
         </form>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;
